@@ -13,7 +13,7 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+const [openFaq, setOpenFaq] = useState<number[]>([]);  // Change from number | null to number[]
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -408,14 +408,11 @@ export default function Home() {
                 type="button"
                 className="flex justify-between items-center w-full text-left group focus:outline-none"
                 onClick={() => {
-                setOpenFaq((prev) => {
-                  if (!Array.isArray(prev)) prev = [];
-                  if (prev.includes(index)) {
-                  return prev.filter((i) => i !== index);
-                  } else {
-                  return [...prev, index];
-                  }
-                });
+                  setOpenFaq(prev => 
+                    prev.includes(index) 
+                      ? prev.filter(i => i !== index) 
+                      : [...prev, index]
+                  );
                 }}
                 aria-expanded={isOpen}
                 aria-controls={`faq-answer-${index}`}
