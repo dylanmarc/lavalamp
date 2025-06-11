@@ -102,7 +102,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="text-center py-6 text-gray-400 text-sm bg-gray-950">
-        © {new Date().getFullYear()} LAVA LAMP
+        © {new Date().getFullYear()} Lava Lamp Digital
       </footer>
     </div>
   );
